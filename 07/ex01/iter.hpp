@@ -15,7 +15,7 @@ void	iter(T *a, size_t n, void(*fc)(T&))
 	{
 		fc(a[i]);
 	}
-};
+}
 
 
 template <typename T>
@@ -25,4 +25,4 @@ void	iter(T *a, size_t n, void(*fc)(const T&))
 	{
 		fc(a[i]);
 	}
-};
+}
