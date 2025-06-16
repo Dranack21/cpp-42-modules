@@ -5,26 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: habouda <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 22:27:01 by habouda           #+#    #+#             */
-/*   Updated: 2025/03/12 14:35:29 by habouda          ###   ########.fr       */
+/*   Created: 2025/03/23 15:06:52 by habouda           #+#    #+#             */
+/*   Updated: 2025/03/23 15:53:01 by habouda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/Zombie.hpp"
+#include "includes/Harl.hpp"
 
-int main()
+int	main()
 {
-	int 	N;
-	int 	i;
-	Zombie *Pointeur;
+	Harl Harl_2_0;
+	std::string line;
+	int i;
 
-	N = 2;
 	i = 0;
-	Pointeur = zombieHorde(N, "Bob");
-	while (i < N)
+	Harl_2_0.complain("debug");
+	Harl_2_0.complain("info");
+	Harl_2_0.complain("warning");
+	Harl_2_0.complain("error");
+	while (i != 4)
 	{
-		Pointeur[i].announce();
+		std::cout << "Make Harl say something :";
+		std::cin >> line;
+		Harl_2_0.complain(line);
 		i++;
 	}
-	delete [] Pointeur;
 }

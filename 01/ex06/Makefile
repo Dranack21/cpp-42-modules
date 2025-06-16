@@ -1,15 +1,15 @@
 ### COMPIL #####################################################################
 
-CC      = clang++
+CC      = g++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
-NAME    =  Moar_brainz!
+NAME    =  harlFilter
 
 ### SRC ########################################################################
 
 SRCS    = main.cpp \
-          srcs/Zombie.cpp\
-		  srcs/zombieHorde.cpp\
-
+		srcs/Harl.cpp \
+		
+    
 ### OBJS ###########################################################################
 
 OBJDIR  = obj

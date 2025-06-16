@@ -4,18 +4,19 @@
 
 Fixed::Fixed(): _fixed_value(0)
 {
-	std::cout << "Constructor called fixed value set to 0" << std::endl;
+	std::cout <<"Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &copy)
 {
-	std::cout << "Fixed Copy Constructor called" << std::endl;
-	*this = copy;  ///CHECK///
+	std::cout << "Copy constructor called" << std::endl;
+	*this = copy; 
 }
+
 
 Fixed &Fixed::operator=(const Fixed &other)
 {
-	std::cout << "Fixed overload operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->_fixed_value = other._fixed_value;
@@ -29,7 +30,7 @@ Fixed::~Fixed()
 }
 
 
-int Fixed::getRawBits()
+int Fixed::getRawBits()const
 {
 	std::cout << "GetRawBits member function called" << std::endl;
 	return (this->_fixed_value);

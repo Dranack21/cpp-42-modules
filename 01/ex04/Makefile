@@ -1,14 +1,12 @@
 ### COMPIL #####################################################################
 
-CC      = clang++
+CC      = g++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
-NAME    =  Moar_brainz!
+NAME    =  Sed_is_for_losers
 
 ### SRC ########################################################################
 
 SRCS    = main.cpp \
-          srcs/Zombie.cpp\
-		  srcs/zombieHorde.cpp\
 
 ### OBJS ###########################################################################
 

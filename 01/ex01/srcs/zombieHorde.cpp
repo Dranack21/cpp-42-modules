@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: habouda <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 22:27:01 by habouda           #+#    #+#             */
-/*   Updated: 2025/03/12 14:35:29 by habouda          ###   ########.fr       */
+/*   Created: 2025/03/11 22:38:47 by habouda           #+#    #+#             */
+/*   Updated: 2025/03/11 23:15:46 by habouda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/Zombie.hpp"
+#include "../includes/Zombie.hpp"
 
-int main()
+Zombie* zombieHorde( int N, std::string name )
 {
-	int 	N;
-	int 	i;
-	Zombie *Pointeur;
+	int i;
 
-	N = 2;
 	i = 0;
-	Pointeur = zombieHorde(N, "Bob");
+	Zombie *Zombie_horde;
+
+	if (N <= 0)
+		return (NULL);
+	Zombie_horde = new Zombie[N];
 	while (i < N)
 	{
-		Pointeur[i].announce();
+		Zombie_horde[i].Set_Name(name);
 		i++;
 	}
-	delete [] Pointeur;
+	return (Zombie_horde);
 }

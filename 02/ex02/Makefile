@@ -1,14 +1,13 @@
 ### COMPIL #####################################################################
 
-CC      = clang++
+CC      = g++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
-NAME    =  Moar_brainz!
+NAME    = a.out
 
 ### SRC ########################################################################
 
 SRCS    = main.cpp \
-          srcs/Zombie.cpp\
-		  srcs/zombieHorde.cpp\
+			Fixed.cpp\
 
 ### OBJS ###########################################################################
 

@@ -5,26 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: habouda <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 22:27:01 by habouda           #+#    #+#             */
-/*   Updated: 2025/03/12 14:35:29 by habouda          ###   ########.fr       */
+/*   Created: 2025/03/11 20:58:22 by habouda           #+#    #+#             */
+/*   Updated: 2025/03/11 22:13:26 by habouda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/Zombie.hpp"
 
-int main()
+int	main()
 {
-	int 	N;
-	int 	i;
-	Zombie *Pointeur;
+	Zombie *bob;
+	bob = newZombie("bob");
+	bob->announce();
+	randomChump("Susie");
+	delete bob;
+}
 
-	N = 2;
-	i = 0;
-	Pointeur = zombieHorde(N, "Bob");
-	while (i < N)
-	{
-		Pointeur[i].announce();
-		i++;
-	}
-	delete [] Pointeur;
+Zombie* newZombie(std::string name)
+{
+	Zombie *bob;
+	bob = new Zombie(name);
+	return (bob);
+}
+
+void randomChump(std::string name)
+{
+	Zombie Suzie = Zombie(name);
+	Suzie.announce();
 }

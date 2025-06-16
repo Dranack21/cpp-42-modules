@@ -2,14 +2,12 @@
 
 CC      = clang++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
-NAME    =  Moar_brainz!
+NAME    =  Hi_This_is_Brain
 
 ### SRC ########################################################################
 
 SRCS    = main.cpp \
-          srcs/Zombie.cpp\
-		  srcs/zombieHorde.cpp\
-
+    
 ### OBJS ###########################################################################
 
 OBJDIR  = obj

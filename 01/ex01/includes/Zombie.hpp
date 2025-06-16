@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: habouda <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 16:57:48 by habouda           #+#    #+#             */
-/*   Updated: 2025/03/08 18:18:03 by habouda          ###   ########.fr       */
+/*   Created: 2025/03/11 22:27:06 by habouda           #+#    #+#             */
+/*   Updated: 2025/03/11 23:02:43 by habouda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-#define CONTACT_H
-
 #include <iostream>
-#include <string>
-#include <iomanip>
-#include <cstdlib>
 
-class Contact {
-
+class Zombie
+{
 	private:
-		static	std::string	_field_names[5];
-		std::string			_data[5];
+		std::string _name;
 	public:
-		Contact(void);
-		~Contact(void);
-		void	set_contact_info();
-		void	get_contact (int index);
+		Zombie(void);
+		~Zombie(void);
+		void	Set_Name(std::string name);
+		void	announce();
 };
-#endif
+
+Zombie* zombieHorde( int N, std::string name );

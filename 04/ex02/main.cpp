@@ -33,7 +33,7 @@ int main()
 		std::cout << "\ngatito idea before change 0: " << gatito->getIdea(0) << std::endl;
 		std::cout << "katt idea before change 0: " << katt->getIdea(0) << std::endl;
 		gatito->setIdea(0, "Break a vase\n");
-
+		katt = gatito;
 		std::cout << "\ngatito idea 0 after change : " << gatito->getIdea(0) << std::endl;
 		std::cout << "katt idea 0 after change: " << katt->getIdea(0) << std::endl;
 

@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: habouda <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 22:27:01 by habouda           #+#    #+#             */
-/*   Updated: 2025/03/12 14:35:29 by habouda          ###   ########.fr       */
+/*   Created: 2025/03/12 15:25:20 by habouda           #+#    #+#             */
+/*   Updated: 2025/03/12 18:17:33 by habouda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/Zombie.hpp"
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-int main()
+#include <iostream>
+#include "Weapon.hpp"
+
+class HumanA
 {
-	int 	N;
-	int 	i;
-	Zombie *Pointeur;
+	private:
+		std::string _name;
+		Weapon &_Weapon;
+	public:
+		HumanA(std::string name, Weapon &Weapon);
+		~HumanA(void);
+		void	attack();
+};
 
-	N = 2;
-	i = 0;
-	Pointeur = zombieHorde(N, "Bob");
-	while (i < N)
-	{
-		Pointeur[i].announce();
-		i++;
-	}
-	delete [] Pointeur;
-}
+#endif

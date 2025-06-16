@@ -20,15 +20,7 @@ Cat::Cat(const Cat &copy): Animal(copy)
 	std::cout << "Cat Copy constructor has been called " << std::endl;
 }
 Cat &Cat::operator=(const Cat &other)
-{
-	if (this != &other)
-	{
-		Animal::operator=(other);
-
-		if (this->_brain)
-			delete this->_brain;
-		this->_brain = new Brain(*other._brain); // Deep copy
-		std::cout << "Cat assignment operator called" << std::endl;
+{`signment operator called" << std::endl;
 	}
 	return *this;
 }

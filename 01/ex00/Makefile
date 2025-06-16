@@ -1,26 +1,35 @@
 ### COMPIL #####################################################################
 
-CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
-NAME 	= megaphone
+CC      = clang++
+CFLAGS  = -Wall -Wextra -Werror -std=c++98
+NAME    = Brainzzzz
 
 ### SRC ########################################################################
 
-SRCS	=	megaphone.cpp
+SRCS    = main.cpp \
+          srcs/Zombie.cpp\
 
-### OBJS #######################################################################
+### OBJS ###########################################################################
 
-OBJS	= $(SRCS:.cpp=.o)
+OBJDIR  = obj
+SRCDIR  = srcs
+OBJS    = $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
-### COMMANDS ###################################################################
+### COMMANDS #######################################################################
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -f $(NAME)

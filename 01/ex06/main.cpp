@@ -5,26 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: habouda <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 22:27:01 by habouda           #+#    #+#             */
-/*   Updated: 2025/03/12 14:35:29 by habouda          ###   ########.fr       */
+/*   Created: 2025/03/23 15:06:52 by habouda           #+#    #+#             */
+/*   Updated: 2025/04/15 02:31:00 by habouda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/Zombie.hpp"
+#include "includes/Harl.hpp"
 
-int main()
+int	get_level(std::string level)
 {
-	int 	N;
-	int 	i;
-	Zombie *Pointeur;
+	if (level.compare("DEBUG") == 0)
+		return (0);
+	if (level.compare("INFO") == 0)
+		return (1);
+	if (level.compare("WARNING") == 0)
+		return (2);
+	if (level.compare("ERROR") == 0)
+		return (3);
+	return (4);
+}
 
-	N = 2;
-	i = 0;
-	Pointeur = zombieHorde(N, "Bob");
-	while (i < N)
+int	main(int argc, char *argv[])
+{
+	Harl Harl_2_0;
+
+	if (argc != 2)
 	{
-		Pointeur[i].announce();
-		i++;
+		std::cout << "Must have a singular argument of filter" << std::endl;
+		return (1);
 	}
-	delete [] Pointeur;
+	Harl_2_0.complain(argv[1]);
 }

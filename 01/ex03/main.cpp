@@ -5,26 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: habouda <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 22:27:01 by habouda           #+#    #+#             */
-/*   Updated: 2025/03/12 14:35:29 by habouda          ###   ########.fr       */
+/*   Created: 2025/03/12 15:39:48 by habouda           #+#    #+#             */
+/*   Updated: 2025/04/14 22:41:20 by habouda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/Zombie.hpp"
+#include "includes/Weapon.hpp"
+#include "includes/HumanA.hpp"
+#include "includes/HumanB.hpp"
 
-int main()
+int	main()
 {
-	int 	N;
-	int 	i;
-	Zombie *Pointeur;
-
-	N = 2;
-	i = 0;
-	Pointeur = zombieHorde(N, "Bob");
-	while (i < N)
-	{
-		Pointeur[i].announce();
-		i++;
-	}
-	delete [] Pointeur;
+		{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
+		}
+		{
+		Weapon club = Weapon("crude spiked club");
+		Weapon club2 = Weapon("big Hammer");
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+		jim.setWeapon(club2);
+		jim.attack();
+		}
+		return (0);
 }
