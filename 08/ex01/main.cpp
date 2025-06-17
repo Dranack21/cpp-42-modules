@@ -5,6 +5,11 @@ int	main()
 	try
 	{
 		Span s(5);
+		s.addNumber(0);
+		s.addNumber(1);
+		s.addNumber(2);
+		s.addNumber(3);
+		s.addNumber(500);
 		s.longestSpan();
 		s.shortestSpan();
 	}
@@ -12,5 +17,29 @@ int	main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
+	try
+	{
+		Span s(20000);
+		for (int i = 0;  i != 20000 ; i++)
+			s.addNumber(i);
+		s.longestSpan();
+		s.shortestSpan();
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		Span s(200);
+		int arr[] = {0, 23, 34, 324, 2};
+		std::vector<int> tmp(arr, arr + sizeof(arr) / sizeof(int));
+		s.bigADDER(tmp.begin(), tmp.end());
+		s.longestSpan();
+		s.shortestSpan();
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

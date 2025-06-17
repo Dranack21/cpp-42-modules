@@ -15,12 +15,12 @@ int	main()
 		vec.push_back(12);
 		vec.push_back(-45);
 		::easyfind(vec, -45);
+		////DEQUE/////
 		std::deque<int> deq;
 		deq.push_back(-1);
 		deq.push_back(12);
 		deq.push_back(-45);
-		::easyfind(deq, 0);
-
+		::easyfind(deq, 12);
 	}
 	catch (std::exception &e)
 	{

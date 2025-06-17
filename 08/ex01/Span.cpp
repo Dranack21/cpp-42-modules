@@ -61,3 +61,10 @@ void	Span::longestSpan()
 	std::sort(tmp.begin(), tmp.end());
 	std::cout << "Longest Span is " << *(tmp.rbegin()) - *(tmp.begin()) << std::endl;
 }
+
+void	Span::bigADDER(iterator i, iterator i2)
+{
+	if (std::distance(i, i2) + _vec.size() >= _max)
+		throw std::runtime_error("maximum size exceeded");
+	this->_vec.insert(_vec.end(), i, i2);
+}

@@ -18,6 +18,8 @@ class Span
 		~Span();
 		void	shortestSpan();
 		void	longestSpan();
+		typedef typename std::vector<int>::iterator iterator;
+		void	bigADDER(iterator i, iterator i2);
 		void	addNumber(int i);
 
 };
