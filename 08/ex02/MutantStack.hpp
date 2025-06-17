@@ -28,12 +28,4 @@ class	MutantStack : public std::stack<T, Container>
 		{
 			return (this->c.end());
 		}
-		iterator	rbegin()
-		{
-			return (this->c.rbegin());
-		}
-		iterator	rend()
-		{
-			return (this->c.rend());
-		}
 };
