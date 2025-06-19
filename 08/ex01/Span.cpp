@@ -29,22 +29,29 @@ void	Span::addNumber(int i)
 
 int	Span::shortestSpan()
 {
+	int	n = INT_MAX;
+	long diff;
+
 	if (_vec.size() <= 1)
 		throw std::runtime_error("Size below or equal to 1");
-	int	n = INT_MAX;
+
 	std::vector<int> tmp = _vec;
 	std::sort(tmp.begin(), tmp.end());
 	std::vector<int>::iterator it;
+
 	it = tmp.begin();
 	it++;
 	while (it != tmp.end())
 	{
-		if (*it - *(it - 1) < n)
-			n = *it - *(it - 1);
+		diff = static_cast<long>(*it) - static_cast<long>(*(it - 1));
+		if (diff < INT_MIN || diff > INT_MAX)
+			throw std::runtime_error("Overfload when doing comparaison");
+		if (diff < n)
+			n = static_cast<int>(diff);
 		it++;
 	}
 	std::cout << "Shortest Span is " << n << std::endl;
-	return (*it);
+	return (n);
 }
 
 int	Span::longestSpan()
@@ -56,8 +63,9 @@ int	Span::longestSpan()
 	std::vector<int> tmp;
 	tmp = _vec;
 	std::sort(tmp.begin(), tmp.end());
+
 	diff = static_cast<long>(*(tmp.rbegin())) - static_cast<long>(*(tmp.begin()));
-	if (std::numeric_limits<int>::max() < diff)
+	if (diff > INT_MAX || diff < INT_MIN)
 		throw std::runtime_error("Span too big int overflow");
 	std::cout << "Longest Span is " << *(tmp.rbegin()) - *(tmp.begin()) << std::endl;
 	return (*(tmp.rbegin()) - *(tmp.begin()));
