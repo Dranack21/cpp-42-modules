@@ -97,7 +97,7 @@ int main()
 		MutantStack<float, std::vector<float> >::iterator it = MStackFloat.begin();
 		
 		std::cout	<< "printing the entire stack with iterators,"
-					<< " then changing there value through dereferencing:" << std::endl;
+					<< " then changing their values through dereferencing:" << std::endl;
 		
 		while(it != MStackFloat.end())
 		{

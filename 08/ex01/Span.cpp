@@ -22,18 +22,15 @@ Span	&Span::operator=(const Span &other)
 void	Span::addNumber(int i)
 {
 	if (_vec.size() < _max)
-		_vec.push_back( i);
+		_vec.push_back(i);
 	else
 		throw std::runtime_error("maximum size exceeded");
 }
 
-void	Span::shortestSpan()
+int	Span::shortestSpan()
 {
 	if (_vec.size() <= 1)
-	{
-		std::cout << "No span" << std::endl;
-		return ;
-	}
+		throw std::runtime_error("Size below or equal to 1");
 	int	n = INT_MAX;
 	std::vector<int> tmp = _vec;
 	std::sort(tmp.begin(), tmp.end());
@@ -47,24 +44,22 @@ void	Span::shortestSpan()
 		it++;
 	}
 	std::cout << "Shortest Span is " << n << std::endl;
+	return (*it);
 }
 
-void	Span::longestSpan()
+int	Span::longestSpan()
 {
+	long diff;
+
 	if (_vec.size() <= 1)
-	{
-		std::cout << "No span" << std::endl;
-		return ;
-	}
+		throw std::runtime_error("Size below or equal to 1");
 	std::vector<int> tmp;
 	tmp = _vec;
 	std::sort(tmp.begin(), tmp.end());
+	diff = static_cast<long>(*(tmp.rbegin())) - static_cast<long>(*(tmp.begin()));
+	if (std::numeric_limits<int>::max() < diff)
+		throw std::runtime_error("Span too big int overflow");
 	std::cout << "Longest Span is " << *(tmp.rbegin()) - *(tmp.begin()) << std::endl;
+	return (*(tmp.rbegin()) - *(tmp.begin()));
 }
 
-void	Span::bigADDER(iterator i, iterator i2)
-{
-	if (std::distance(i, i2) + _vec.size() >= _max)
-		throw std::runtime_error("maximum size exceeded");
-	this->_vec.insert(_vec.end(), i, i2);
-}

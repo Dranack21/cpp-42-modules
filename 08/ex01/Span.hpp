@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <limits.h>
+#include <limits>
 
 class Span
 {
@@ -16,10 +17,15 @@ class Span
 		Span(const Span &other);
 		Span &operator=(const Span &other);
 		~Span();
-		void	shortestSpan();
-		void	longestSpan();
-		typedef typename std::vector<int>::iterator iterator;
-		void	bigADDER(iterator i, iterator i2);
+		int	shortestSpan();
+		int	longestSpan();
+		template <typename iterator>
+		void	bigADDER(iterator i, iterator i2)
+		{
+			if (std::distance(i, i2) + _vec.size() >= _max)
+				throw std::runtime_error("maximum size exceeded");
+			this->_vec.insert(_vec.end(), i, i2);
+		}
 		void	addNumber(int i);
 
 };

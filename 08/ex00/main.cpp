@@ -20,7 +20,7 @@ int	main()
 		deq.push_back(-1);
 		deq.push_back(12);
 		deq.push_back(-45);
-		::easyfind(deq, 12);
+		::easyfind(deq, 0);
 	}
 	catch (std::exception &e)
 	{

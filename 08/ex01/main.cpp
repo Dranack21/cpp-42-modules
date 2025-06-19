@@ -6,10 +6,10 @@ int	main()
 	{
 		Span s(5);
 		s.addNumber(0);
-		s.addNumber(1);
-		s.addNumber(2);
-		s.addNumber(3);
-		s.addNumber(500);
+		s.addNumber(-12);
+		s.addNumber(2147483647);
+		s.addNumber(0);
+		s.addNumber(0);
 		s.longestSpan();
 		s.shortestSpan();
 	}
