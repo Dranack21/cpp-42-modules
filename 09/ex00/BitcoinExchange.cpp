@@ -7,12 +7,6 @@ void	Fill_map(std::fstream &file)
 
 	while(std::getline(file, line))
 		Read_line(line ,map);
-	std::map<Date, double>::iterator it = map.begin();
-	while(it != map.end())
-	{
-		std::cout << "Year :" << it->first.Year << " Month "<< it->first.Month << " Day :" << it->first.Day << std::endl;
-		it++;
-	}
 }
 
 void	Read_line(std::string &line, std::map<Date, double> &map)

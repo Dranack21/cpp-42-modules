@@ -17,4 +17,18 @@ int main(int argc, char *argv[])
 	}
 	Fill_map(file);
 	file.close();
+
+	file.open("input.txt");
+	std::string line;
+	int i = 0;
+	int y = 0;
+	double o = 0;
+	int z = 0;
+	char c = ' ';
+	while (std::getline(file, line))
+	{
+		int result = sscanf(line.c_str(), "%d-%d-%d | %lf%c",&i,&y,&z,&o,&c);
+		if (result == 4 && c == ' ')
+			std::cout << "i: " << i << ", y: " << y << ", z: " << z << std::endl;
+	}
 }
