@@ -23,9 +23,28 @@ struct Date
 	int Day;
 	
 	bool operator<(const Date &other) const;
+	bool operator!=(const Date &other) const;
 	
 };
+class	Btc
+{
+	private:
+		std::map<Date, double>	_map;
+		Date					_date;
+		std::fstream 			_input;
+		std::fstream 			_data;
+	public:
+		Btc();
+		Btc(const Btc &other);
+		Btc &operator=(const Btc &other);
+		~Btc();
 
-void	Fill_map(std::fstream &file);
-void	Read_line(std::string &line, std::map<Date, double> &map);
+		void	Open_files(std::string file);
+		void	Fill_map();
+		void	Read_input();
+		void	Fill_keys(std::string &line);
+};
 
+
+void	Read_data(std::string &line, std::map<Date, double> &map);
+bool	Date_parser(Date &d);
