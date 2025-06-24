@@ -13,7 +13,7 @@ int	main(int argc, char *argv[])
 		
 		i = 0;
 		fill_stack(s, argv[1]);
-		while(argv[1][i] && s.size() != 1)
+		while(argv[1][i] && !s.empty())
 		{
 			if (argv[1][i] == '+')
 				add(s, &temp);
@@ -23,6 +23,8 @@ int	main(int argc, char *argv[])
 				multiply(s, &temp);
 			else if (argv[1][i] == '/')
 				divide(s, &temp);
+			else if (argv[1][i] != ' ' && isdigit(argv[1][i]) == 0)
+				throw std::runtime_error("Invalid synthax");
 			i++;
 		}
 		std::cout << s.top() << std::endl;
