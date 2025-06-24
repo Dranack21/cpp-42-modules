@@ -2,10 +2,34 @@
 
 int	main(int argc, char *argv[])
 {
-	data d;
-	if (argc != 2)
-		return (1);
-	std::stack<int> s;
-	sscanf(argv[1], )
+	try
+	{
+		std::stack<int> s;
+		int 			temp;
+		int i;
 	
+		if (argc != 2)
+			throw std::runtime_error("Please use one arg");
+		
+		i = 0;
+		fill_stack(s, argv[1]);
+		while(argv[1][i] && s.size() != 1)
+		{
+			if (argv[1][i] == '+')
+				add(s, &temp);
+			else if (argv[1][i] == '-')
+				substract(s, &temp);
+			else if (argv[1][i] == '*')
+				multiply(s, &temp);
+			else if (argv[1][i] == '/')
+				divide(s, &temp);
+			i++;
+		}
+		std::cout << s.top() << std::endl;
+		return (0);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

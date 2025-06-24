@@ -2,17 +2,10 @@
 
 #include <iostream>
 #include <stack>
+#include "string.h"
 
-struct data
-{
-	int a;
-	int b;
-	int c;
-	int d;
-	int e;
-	int f;
-	int g;
-	int h;
-	int i;
-
-}
+void	fill_stack(std::stack<int>&s, std::string line);
+void	add(std::stack<int>& s, int* y);
+void	substract(std::stack<int>& s, int* y);
+void	multiply(std::stack<int>& s, int *y);
+void	divide(std::stack<int>& s, int* y);
