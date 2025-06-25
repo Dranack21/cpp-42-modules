@@ -6,14 +6,16 @@ int	main(int argc, char *argv[])
 	{
 		std::stack<int> s;
 		int 			temp;
-		int i;
+		int 			i;
 	
 		if (argc != 2)
 			throw std::runtime_error("Please use one arg");
-		
 		i = 0;
 		fill_stack(s, argv[1]);
-		while(argv[1][i] && !s.empty())
+		if (s.size() == 1)
+			throw std::runtime_error("Need two ints for an operation");
+		std::cout << "Stack size" << s.size() << std::endl;
+		while(argv[1][i] && s.size() != 1)
 		{
 			if (argv[1][i] == '+')
 				add(s, &temp);
@@ -27,6 +29,8 @@ int	main(int argc, char *argv[])
 				throw std::runtime_error("Invalid synthax");
 			i++;
 		}
+		if (s.size() != 1)
+			throw std::runtime_error("Invalid synthax");
 		std::cout << s.top() << std::endl;
 		return (0);
 	}
