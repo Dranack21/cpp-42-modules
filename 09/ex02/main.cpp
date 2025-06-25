@@ -14,6 +14,19 @@ int main(int argc, char *argv[])
 
 	vec = m.make_initial_vec(argc, argv);
 	deq = m.make_initial_deq(argc, argv);
-	m.sort_recursive_vec(vec);
-	m.sort_recursive_deque(deq);
+	// Print before sorting
+	std::cout << "Before: ";
+	for (size_t i = 0; i < vec.size(); i++)
+		std::cout << vec[i] << " ";
+	std::cout << std::endl;
+	
+	// Sort
+	vec = m.sort_recursive_vec(vec);
+	deq = m.sort_recursive_deque(deq);
+	
+	// Print after sorting
+	std::cout << "After: ";
+	for (size_t i = 0; i < vec.size(); i++)
+		std::cout << vec[i] << " ";
+	std::cout << std::endl;
 }
