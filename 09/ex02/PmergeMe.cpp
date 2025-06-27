@@ -50,11 +50,6 @@ std::vector<int> insert_binary_vector(std::vector<int> &mainge, std::vector<int>
     std::vector<int>::iterator      it;
     std::vector<int>                jacob;
 
-    if (!pending.empty())
-    {
-        mainge.insert(mainge.begin(), pending[0]);
-        pending.erase(pending.begin());
-    }
     if (pending.empty())
         return (mainge);
     j = 1;
@@ -62,9 +57,9 @@ std::vector<int> insert_binary_vector(std::vector<int> &mainge, std::vector<int>
     {
         i = jacobsthal(j);
         j++;
-        jacob.push_back(i);
         if (i >= pending.size())
             break;
+        jacob.push_back(i);
     }
     remove_duplicates_vector(jacob);
     for (size_t k = 0; k < jacob.size(); k++)
@@ -99,11 +94,6 @@ std::deque<int> insert_binary_deque(std::deque<int> &mainge, std::deque<int> &pe
     std::deque<int>::iterator      it;
     std::deque<int>                jacob;
 
-    if (!pending.empty())
-    {
-        mainge.insert(mainge.begin(), pending[0]);
-        pending.erase(pending.begin());
-    }
     if (pending.empty())
         return (mainge);
     j = 1;
@@ -111,9 +101,9 @@ std::deque<int> insert_binary_deque(std::deque<int> &mainge, std::deque<int> &pe
     {
         i = jacobsthal(j);
         j++;
-        jacob.push_back(i);
         if (i >= pending.size())
             break;
+        jacob.push_back(i);
     }
     remove_duplicates_deque(jacob);
     for (size_t k = 0; k < jacob.size(); k++)
