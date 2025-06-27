@@ -28,3 +28,7 @@ class PmergeMe
 		std::deque<int>  sort_recursive_deque(std::deque<int> & input);
 
 };
+
+
+void remove_duplicates_vector(std::vector<int> &vec);
+void remove_duplicates_deque(std::deque<int> &vec);

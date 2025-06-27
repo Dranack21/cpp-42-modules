@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
 	for (size_t i = 0; i < vec.size(); i++)
 		std::cout << vec[i] << " ";
 	std::cout << std::endl;
+	std::cout << std::endl;
 	
 	// Sort
 	vec = m.sort_recursive_vec(vec);

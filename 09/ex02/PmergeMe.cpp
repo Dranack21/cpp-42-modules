@@ -24,19 +24,124 @@ std::deque<int> PmergeMe::make_initial_deq(int argc, char *argv[])
 	return(deq);
 }
 
-size_t jacobsthal(size_t n) {
-    if (n == 0) return 0;
-    if (n == 1) return 1;
+size_t jacobsthal(size_t n) 
+{
     size_t j0 = 0;
     size_t j1 = 1;
     size_t jn = 0;
-    for (size_t i = 2; i <= n; ++i) {
+
+    if (n == 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    for (size_t i = 2; i <= n; ++i)
+    {
         jn = j1 + 2 * j0;
         j0 = j1;
         j1 = jn;
     }
     return jn;
 }
+
+std::vector<int> insert_binary_vector(std::vector<int> &mainge, std::vector<int> &pending)
+{
+    size_t                          i;   ///STORES JACOBSTALS RESULT SO WE CAN INSERT IT///
+    size_t                          j;
+    std::vector<int>::iterator      it;
+    std::vector<int>                jacob;
+
+    if (!pending.empty())
+    {
+        mainge.insert(mainge.begin(), pending[0]);
+        pending.erase(pending.begin());
+    }
+    if (pending.empty())
+        return (mainge);
+    j = 1;
+    while (true)
+    {
+        i = jacobsthal(j);
+        j++;
+        jacob.push_back(i);
+        if (i >= pending.size())
+            break;
+    }
+    remove_duplicates_vector(jacob);
+    for (size_t k = 0; k < jacob.size(); k++)
+    {
+        it = std::lower_bound(mainge.begin(), mainge.end(), pending[jacob[k]]); ////FINDS THE POSITION WHERE TO INSERT
+        mainge.insert(it, pending[jacob[k]]);
+    }
+    for (size_t idx =  0; idx < pending.size(); idx++) ///ON MARQUE EN FALSE LES TRUCS DEJA INSEREE CAD LES TRUCS QUI ONT UN INDICE DE JACOB
+    {
+        bool inserted = false;
+        for (size_t jidx = 0; jidx < jacob.size(); ++jidx)
+        {
+            if (jacob[jidx] == static_cast<int>(idx))
+            {
+                inserted = true;
+                break;
+            }
+        }
+        if (!inserted)
+        {
+            it = std::lower_bound(mainge.begin(), mainge.end(), pending[idx]);
+            mainge.insert(it, pending[idx]);
+        }
+    }
+    return mainge;
+}
+
+std::deque<int> insert_binary_deque(std::deque<int> &mainge, std::deque<int> &pending)
+{
+    size_t                          i;   ///STORES JACOBSTALS RESULT SO WE CAN INSERT IT///
+    size_t                          j;
+    std::deque<int>::iterator      it;
+    std::deque<int>                jacob;
+
+    if (!pending.empty())
+    {
+        mainge.insert(mainge.begin(), pending[0]);
+        pending.erase(pending.begin());
+    }
+    if (pending.empty())
+        return (mainge);
+    j = 1;
+    while (true)
+    {
+        i = jacobsthal(j);
+        j++;
+        jacob.push_back(i);
+        if (i >= pending.size())
+            break;
+    }
+    remove_duplicates_deque(jacob);
+    for (size_t k = 0; k < jacob.size(); k++)
+    {
+        it = std::lower_bound(mainge.begin(), mainge.end(), pending[jacob[k]]); ////FINDS THE POSITION WHERE TO INSERT
+        mainge.insert(it, pending[jacob[k]]);
+    }
+    for (size_t idx =  0; idx < pending.size(); idx++) ///ON MARQUE EN FALSE LES TRUCS DEJA INSEREE CAD LES TRUCS QUI ONT UN INDICE DE JACOB
+    {
+        bool inserted = false;
+        for (size_t jidx = 0; jidx < jacob.size(); ++jidx)
+        {
+            if (jacob[jidx] == static_cast<int>(idx))
+            {
+                inserted = true;
+                break;
+            }
+        }
+        if (!inserted)
+        {
+            it = std::lower_bound(mainge.begin(), mainge.end(), pending[idx]);
+            mainge.insert(it, pending[idx]);
+        }
+    }
+    return mainge;
+}
+
+
 
 std::vector<int> PmergeMe::sort_recursive_vec(std::vector<int> &input)
 {
@@ -66,9 +171,11 @@ std::vector<int> PmergeMe::sort_recursive_vec(std::vector<int> &input)
 		}
 	}
 	mainge = sort_recursive_vec(mainge);
-	//INSERT FUNCTION//
+	mainge = insert_binary_vector(mainge, pending);
 	return (mainge);
 }
+
+
 
 std::deque<int>  PmergeMe::sort_recursive_deque(std::deque<int> &input)
 {
@@ -98,9 +205,40 @@ std::deque<int>  PmergeMe::sort_recursive_deque(std::deque<int> &input)
 		}
 	}
 	mainge = sort_recursive_deque(mainge);
-	//INSERT FUNCTION//
+	mainge = insert_binary_deque(mainge, pending);
 	return (mainge);
 }
 
 
 
+void remove_duplicates_vector(std::vector<int> &vec)
+{
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
+    {
+        std::vector<int>::iterator next = it;
+        ++next;
+        while (next != vec.end())
+        {
+            if (*next == *it)
+                next = vec.erase(next);
+            else
+                ++next;
+        }
+    }
+}
+
+void remove_duplicates_deque(std::deque<int> &vec)
+{
+    for (std::deque<int>::iterator it = vec.begin(); it != vec.end(); ++it)
+    {
+        std::deque<int>::iterator next = it;
+        ++next;
+        while (next != vec.end())
+        {
+            if (*next == *it)
+                next = vec.erase(next);
+            else
+                ++next;
+        }
+    }
+}
