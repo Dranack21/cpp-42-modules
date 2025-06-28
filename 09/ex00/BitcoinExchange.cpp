@@ -79,22 +79,12 @@ void	Btc::Fill_keys(std::string &line)
 		throw std::runtime_error("Error: No Btc value found at this date or any date prior");
 	if (Date_parser(this->_date) == false)
 		throw std::runtime_error("Error: Date doesnt exist or exists before btc invention");
+	if (owned != owned)
+		throw std::runtime_error("Error: Don't use nan please");
 	if (this->_date != it->first)
 		it--;
 	std::cout << this->_date.Year << "-" << this->_date.Month << "-" << this->_date.Day << " => " << owned << " = "<< it->second  * owned << std::endl;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 bool Date::operator<(const Date &other) const
 {
