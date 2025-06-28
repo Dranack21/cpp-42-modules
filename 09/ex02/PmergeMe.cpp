@@ -1,13 +1,13 @@
 #include "PmergeMe.hpp"
 
+unsigned long get_time_us()
+{
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    return tv.tv_sec * 1000000 + tv.tv_usec;
+}
 
-PmergeMe::PmergeMe()
-{}
-
-PmergeMe::~PmergeMe()
-{}
-
-std::vector<int> PmergeMe::make_initial_vec(int argc, char *argv[])
+std::vector<int> make_initial_vec(int argc, char *argv[])
 {
 	std::vector<int> vec;
 
@@ -15,7 +15,7 @@ std::vector<int> PmergeMe::make_initial_vec(int argc, char *argv[])
 		vec.push_back(std::atoi(argv[i]));
 	return (vec);
 }
-std::deque<int> PmergeMe::make_initial_deq(int argc, char *argv[])
+std::deque<int> make_initial_deq(int argc, char *argv[])
 {
 	std::deque<int> deq;
 
@@ -133,7 +133,7 @@ std::deque<int> insert_binary_deque(std::deque<int> &mainge, std::deque<int> &pe
 
 
 
-std::vector<int> PmergeMe::sort_recursive_vec(std::vector<int> &input)
+std::vector<int> sort_recursive_vec(std::vector<int> &input)
 {
 	std::vector<int>	pending;
 	std::vector<int>	mainge;
@@ -167,7 +167,7 @@ std::vector<int> PmergeMe::sort_recursive_vec(std::vector<int> &input)
 
 
 
-std::deque<int>  PmergeMe::sort_recursive_deque(std::deque<int> &input)
+std::deque<int>  sort_recursive_deque(std::deque<int> &input)
 {
 	std::deque<int>		pending;
 	std::deque<int>		mainge;
