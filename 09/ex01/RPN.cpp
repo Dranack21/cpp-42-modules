@@ -1,12 +1,12 @@
 #include "RPN.hpp"
 
-void	fill_stack(std::stack<int> &s, std::string line)
+void fill_stack(std::stack<int> &s, std::string line)
 {
-	 if (line.empty())
-        throw std::runtime_error("empty arg");
-    for (std::string::const_reverse_iterator it = line.rbegin(); it != line.rend(); ++it)
-    {
-        if (isdigit(*it))
+	if (line.empty())
+		throw std::runtime_error("empty arg");
+	for (std::string::const_reverse_iterator it = line.rbegin(); it != line.rend(); ++it)
+	{
+		if (isdigit(*it))
 			s.push(*it - '0');
 	}
 }
@@ -17,22 +17,24 @@ void	calculate_rpn(std::string line, RPN &stack)
 	int 			i = 0;
 
 	while(line[i] && stack.s.size() != 1)
-		{
-			if (line[i] == '+')
-				add(stack, &temp);
-			else if (line[i] == '-')
-				substract(stack, &temp);
-			else if (line[i] == '*')
-				multiply(stack, &temp);
-			else if (line[i] == '/')
-				divide(stack, &temp);
-			else if (isdigit(line[i]))
-				stack.digit_count++;
-			else if (line[i] != ' ')
-				throw std::runtime_error("Invalid synthax");
-			i++;
-		}
-}
+	{
+		if (line[i] == '+')
+			add(stack, &temp);
+		else if (line[i] == '-')
+			substract(stack, &temp);
+		else if (line[i] == '*')
+			multiply(stack, &temp);
+		else if (line[i] == '/')
+			divide(stack, &temp);
+		else if (isdigit(line[i]))
+			stack.digit_count++;
+		else if (line[i] != ' ')
+			throw std::runtime_error("Invalid synthax");
+		i++;
+	}
+	if (line[i])
+		throw std::runtime_error("Error: Extraneous characters at the end");
+}	
 
 void	add(RPN &s, int* y)
 {
