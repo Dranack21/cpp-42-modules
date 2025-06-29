@@ -18,9 +18,6 @@ int	main(int argc, char *argv[])
 		if (stack.s.size() <= 1 || stack.s.size() >= 10)
 			throw std::runtime_error("Error: Invalid stack size please use 2 to 9 numbers");
 		calculate_rpn(argv[1], stack);
-		std::cout << "Operator count: " << stack.operator_count << std::endl;
-		std::cout << "Digit count: " << stack.digit_count << std::endl;
-		
 		if (stack.s.size() != 1 || stack.operator_count + 1 != stack.digit_count)
 			throw std::runtime_error("Error: Unbalanced expression for RPN");
 		std::cout << stack.s.top() << std::endl;

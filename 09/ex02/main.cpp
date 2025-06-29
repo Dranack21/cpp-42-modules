@@ -9,6 +9,8 @@ void	parse_args(int argc, char *argv[])
 		s = argv[i];
 		if (s.find_first_not_of("0123456789") != std::string::npos || atol(argv[i]) > 2147483647)///atol overflow returns long max///
 			throw std::runtime_error("Error");
+		if (s.empty())
+			throw std::runtime_error("Error");
 	}
 }
 
