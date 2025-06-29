@@ -67,6 +67,8 @@ void	Btc::Fill_keys(std::string &line)
 	result = sscanf(line.c_str(), "%d-%d-%d | %lf%c",&this->_date.Year,&this->_date.Month,&this->_date.Day,&owned,&c);
 	it = this->_map.upper_bound(this->_date);
 
+	if (line == "date | value")
+		return ;
 	if (c != ' ' || result > 4)
 		throw std::runtime_error("Error: Extraneous characters in line.");
 	if (result < 4)
